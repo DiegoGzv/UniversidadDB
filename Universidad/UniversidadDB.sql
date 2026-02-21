@@ -1,6 +1,3 @@
--- =========================
--- CREAR BASE DE DATOS
--- =========================
 CREATE DATABASE Universidad;
 GO
 
@@ -19,26 +16,12 @@ CREATE TABLE Direccion (
 );
 
 -- =========================
--- TABLA UNIVERSIDAD
--- =========================
-CREATE TABLE Universidad (
-    idUniversidad INT PRIMARY KEY IDENTITY(1,1),
-    nombre VARCHAR(150) NOT NULL,
-    telefono VARCHAR(15),
-    email VARCHAR(100) UNIQUE,
-    idDireccion INT NOT NULL,
-    FOREIGN KEY (idDireccion) REFERENCES Direccion(idDireccion)
-);
-
--- =========================
 -- TABLA FACULTAD
 -- =========================
 CREATE TABLE Facultad (
     idFacultad INT PRIMARY KEY IDENTITY(1,1),
     nombre VARCHAR(100) NOT NULL,
-    telefonoFa VARCHAR(15),
-    idUniversidad INT NOT NULL,
-    FOREIGN KEY (idUniversidad) REFERENCES Universidad(idUniversidad)
+    telefonoFa VARCHAR(15)
 );
 
 -- =========================
@@ -101,7 +84,6 @@ CREATE TABLE Asignatura (
 
 -- =========================
 -- TABLA DOCENTE_ASIGNATURA
--- (Muchos a Muchos)
 -- =========================
 CREATE TABLE Docente_Asignatura (
     idDocente INT,
@@ -129,7 +111,6 @@ CREATE TABLE Horario (
 
 -- =========================
 -- TABLA ESTUDIANTE_ASIGNATURA
--- (Muchos a Muchos)
 -- =========================
 CREATE TABLE Estudiante_Asignatura (
     idEstudiante INT,
